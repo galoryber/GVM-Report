@@ -1,0 +1,715 @@
+IP,Hostname,Port,Port Protocol,CVSS,Severity,Solution Type,NVT Name,Summary,Specific Result,NVT OID,CVEs,Task ID,Task Name,Timestamp,Result ID,Impact,Solution,Affected Software/OS,Vulnerability Insight,Vulnerability Detection Method,Product Detection Result,BIDs,CERTs,Other References
+192.168.100.1,,,,10.0,High,"Mitigation","OS End Of Life Detection","OS End Of Life Detection.
+
+  The Operating System on the remote host has reached the end of life and should
+  not be used anymore.","The ""Debian GNU/Linux"" Operating System on the remote host has reached the end of life.
+
+CPE:               cpe:/o:debian:debian_linux:7
+Installed version,
+build or SP:       7
+EOL date:          2018-05-31
+EOL info:          https://en.wikipedia.org/wiki/List_of_Debian_releases#Release_table
+",1.3.6.1.4.1.25623.1.0.103674,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:36:42Z,974dfce9-560f-4d35-aaef-64bb26fd0ad4,"","Upgrade the Operating System on the remote host
+  to a version which is still supported and receiving security updates by the vendor.","","","
+Details:
+OS End Of Life Detection
+(OID: 1.3.6.1.4.1.25623.1.0.103674)
+Version used: 2019-10-21T09:55:06Z
+","Product: cpe:/o:debian:debian_linux:7
+Method: OS Detection Consolidation and Reporting
+(OID: 1.3.6.1.4.1.25623.1.0.105937)
+","","",""
+192.168.100.200,synology,5001,tcp,6.4,Medium,"Mitigation","SSL/TLS: Missing `secure` Cookie Attribute","The host is running a server with SSL/TLS and is prone to information
+  disclosure vulnerability.","The cookies:
+
+Set-Cookie: id=;expires=Thu, 01-Jan-1970 00:00:01 GMT;path=/
+
+are missing the ""secure"" attribute.
+",1.3.6.1.4.1.25623.1.0.902661,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:44:25Z,6752f62d-df00-433f-a7de-04cf5c665476,"","Set the 'secure' attribute for any cookies that are sent over a SSL/TLS connection.","Server with SSL/TLS.","The flaw is due to cookie is not using 'secure' attribute, which
+  allows cookie to be passed to the server by the client over non-secure channels (http) and allows attacker
+  to conduct session hijacking attacks.","
+Details:
+SSL/TLS: Missing `secure` Cookie Attribute
+(OID: 1.3.6.1.4.1.25623.1.0.902661)
+Version used: 2019-11-08T10:10:55Z
+","","","",""
+192.168.100.199,,10443,tcp,5.0,Medium,"Mitigation","SSL/TLS: Report Vulnerable Cipher Suites for HTTPS","This routine reports all SSL/TLS cipher suites accepted by a service
+  where attack vectors exists only on HTTPS services.","'Vulnerable' cipher suites accepted by this service via the TLSv1.0 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+'Vulnerable' cipher suites accepted by this service via the TLSv1.1 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+'Vulnerable' cipher suites accepted by this service via the TLSv1.2 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+
+",1.3.6.1.4.1.25623.1.0.108031,"CVE-2016-2183,CVE-2016-6329",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:43:12Z,43b40135-e23f-4088-b2e6-4ca4ac202a8d,"","The configuration of this services should be changed so
+  that it does not accept the listed cipher suites anymore.
+
+  Please see the references for more resources supporting you with this task.","Services accepting vulnerable SSL/TLS cipher suites via HTTPS.","These rules are applied for the evaluation of the vulnerable cipher suites:
+
+  - 64-bit block cipher 3DES vulnerable to the SWEET32 attack (CVE-2016-2183).","
+Details:
+SSL/TLS: Report Vulnerable Cipher Suites for HTTPS
+(OID: 1.3.6.1.4.1.25623.1.0.108031)
+Version used: 2017-02-08T11:56:44Z
+","","","DFN-CERT-2020-2141,DFN-CERT-2020-0368,DFN-CERT-2019-1455,DFN-CERT-2019-0068,DFN-CERT-2018-1296,DFN-CERT-2018-0323,DFN-CERT-2017-2070,DFN-CERT-2017-1954,DFN-CERT-2017-1885,DFN-CERT-2017-1831,DFN-CERT-2017-1821,DFN-CERT-2017-1785,DFN-CERT-2017-1626,DFN-CERT-2017-1326,DFN-CERT-2017-1239,DFN-CERT-2017-1238,DFN-CERT-2017-1090,DFN-CERT-2017-1060,DFN-CERT-2017-0968,DFN-CERT-2017-0947,DFN-CERT-2017-0946,DFN-CERT-2017-0904,DFN-CERT-2017-0816,DFN-CERT-2017-0746,DFN-CERT-2017-0677,DFN-CERT-2017-0675,DFN-CERT-2017-0611,DFN-CERT-2017-0609,DFN-CERT-2017-0522,DFN-CERT-2017-0519,DFN-CERT-2017-0482,DFN-CERT-2017-0351,DFN-CERT-2017-0090,DFN-CERT-2017-0089,DFN-CERT-2017-0088,DFN-CERT-2017-0086,DFN-CERT-2016-1943,DFN-CERT-2016-1937,DFN-CERT-2016-1732,DFN-CERT-2016-1726,DFN-CERT-2016-1715,DFN-CERT-2016-1714,DFN-CERT-2016-1588,DFN-CERT-2016-1555,DFN-CERT-2016-1391,DFN-CERT-2016-1378,CB-K20/1023,CB-K20/0321,CB-K20/0314,CB-K20/0157,CB-K19/0618,CB-K19/0615,CB-K18/0296,CB-K17/1980,CB-K17/1871,CB-K17/1803,CB-K17/1753,CB-K17/1750,CB-K17/1709,CB-K17/1558,CB-K17/1273,CB-K17/1202,CB-K17/1196,CB-K17/1055,CB-K17/1026,CB-K17/0939,CB-K17/0917,CB-K17/0915,CB-K17/0877,CB-K17/0796,CB-K17/0724,CB-K17/0661,CB-K17/0657,CB-K17/0582,CB-K17/0581,CB-K17/0506,CB-K17/0504,CB-K17/0467,CB-K17/0345,CB-K17/0098,CB-K17/0089,CB-K17/0086,CB-K17/0082,CB-K16/1837,CB-K16/1830,CB-K16/1635,CB-K16/1630,CB-K16/1624,CB-K16/1622,CB-K16/1500,CB-K16/1465,CB-K16/1307,CB-K16/1296",""
+192.168.100.1,,443,tcp,5.0,Medium,"Mitigation","Missing `httpOnly` Cookie Attribute","The application is missing the 'httpOnly' cookie attribute","The cookies:
+
+Set-Cookie: PHPSESSID=***replaced***; path=/; secure
+
+are missing the ""httpOnly"" attribute.
+",1.3.6.1.4.1.25623.1.0.105925,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:36:42Z,572838fe-5805-4c63-94dd-263f17faf9a2,"","Set the 'httpOnly' attribute for any session cookie.","Application with session handling in cookies.","The flaw is due to a cookie is not using the 'httpOnly' attribute. This
+  allows a cookie to be accessed by JavaScript which could lead to session hijacking attacks.","Check all cookies sent by the application for a missing 'httpOnly' attribute
+Details:
+Missing `httpOnly` Cookie Attribute
+(OID: 1.3.6.1.4.1.25623.1.0.105925)
+Version used: 2019-11-21T13:29:18Z
+","","","",""
+192.168.100.199,,18443,tcp,5.0,Medium,"Mitigation","SSL/TLS: Report Vulnerable Cipher Suites for HTTPS","This routine reports all SSL/TLS cipher suites accepted by a service
+  where attack vectors exists only on HTTPS services.","'Vulnerable' cipher suites accepted by this service via the TLSv1.0 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+'Vulnerable' cipher suites accepted by this service via the TLSv1.1 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+'Vulnerable' cipher suites accepted by this service via the TLSv1.2 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+
+",1.3.6.1.4.1.25623.1.0.108031,"CVE-2016-2183,CVE-2016-6329",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:43:12Z,a270a357-f585-4bba-b914-4094ed894ba6,"","The configuration of this services should be changed so
+  that it does not accept the listed cipher suites anymore.
+
+  Please see the references for more resources supporting you with this task.","Services accepting vulnerable SSL/TLS cipher suites via HTTPS.","These rules are applied for the evaluation of the vulnerable cipher suites:
+
+  - 64-bit block cipher 3DES vulnerable to the SWEET32 attack (CVE-2016-2183).","
+Details:
+SSL/TLS: Report Vulnerable Cipher Suites for HTTPS
+(OID: 1.3.6.1.4.1.25623.1.0.108031)
+Version used: 2017-02-08T11:56:44Z
+","","","DFN-CERT-2020-2141,DFN-CERT-2020-0368,DFN-CERT-2019-1455,DFN-CERT-2019-0068,DFN-CERT-2018-1296,DFN-CERT-2018-0323,DFN-CERT-2017-2070,DFN-CERT-2017-1954,DFN-CERT-2017-1885,DFN-CERT-2017-1831,DFN-CERT-2017-1821,DFN-CERT-2017-1785,DFN-CERT-2017-1626,DFN-CERT-2017-1326,DFN-CERT-2017-1239,DFN-CERT-2017-1238,DFN-CERT-2017-1090,DFN-CERT-2017-1060,DFN-CERT-2017-0968,DFN-CERT-2017-0947,DFN-CERT-2017-0946,DFN-CERT-2017-0904,DFN-CERT-2017-0816,DFN-CERT-2017-0746,DFN-CERT-2017-0677,DFN-CERT-2017-0675,DFN-CERT-2017-0611,DFN-CERT-2017-0609,DFN-CERT-2017-0522,DFN-CERT-2017-0519,DFN-CERT-2017-0482,DFN-CERT-2017-0351,DFN-CERT-2017-0090,DFN-CERT-2017-0089,DFN-CERT-2017-0088,DFN-CERT-2017-0086,DFN-CERT-2016-1943,DFN-CERT-2016-1937,DFN-CERT-2016-1732,DFN-CERT-2016-1726,DFN-CERT-2016-1715,DFN-CERT-2016-1714,DFN-CERT-2016-1588,DFN-CERT-2016-1555,DFN-CERT-2016-1391,DFN-CERT-2016-1378,CB-K20/1023,CB-K20/0321,CB-K20/0314,CB-K20/0157,CB-K19/0618,CB-K19/0615,CB-K18/0296,CB-K17/1980,CB-K17/1871,CB-K17/1803,CB-K17/1753,CB-K17/1750,CB-K17/1709,CB-K17/1558,CB-K17/1273,CB-K17/1202,CB-K17/1196,CB-K17/1055,CB-K17/1026,CB-K17/0939,CB-K17/0917,CB-K17/0915,CB-K17/0877,CB-K17/0796,CB-K17/0724,CB-K17/0661,CB-K17/0657,CB-K17/0582,CB-K17/0581,CB-K17/0506,CB-K17/0504,CB-K17/0467,CB-K17/0345,CB-K17/0098,CB-K17/0089,CB-K17/0086,CB-K17/0082,CB-K16/1837,CB-K16/1830,CB-K16/1635,CB-K16/1630,CB-K16/1624,CB-K16/1622,CB-K16/1500,CB-K16/1465,CB-K16/1307,CB-K16/1296",""
+192.168.100.199,,19443,tcp,5.0,Medium,"Mitigation","SSL/TLS: Report Vulnerable Cipher Suites for HTTPS","This routine reports all SSL/TLS cipher suites accepted by a service
+  where attack vectors exists only on HTTPS services.","'Vulnerable' cipher suites accepted by this service via the TLSv1.0 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+'Vulnerable' cipher suites accepted by this service via the TLSv1.1 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+'Vulnerable' cipher suites accepted by this service via the TLSv1.2 protocol:
+
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+
+",1.3.6.1.4.1.25623.1.0.108031,"CVE-2016-2183,CVE-2016-6329",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:43:12Z,6c095fac-7c8f-4ebe-8864-041563f6fde9,"","The configuration of this services should be changed so
+  that it does not accept the listed cipher suites anymore.
+
+  Please see the references for more resources supporting you with this task.","Services accepting vulnerable SSL/TLS cipher suites via HTTPS.","These rules are applied for the evaluation of the vulnerable cipher suites:
+
+  - 64-bit block cipher 3DES vulnerable to the SWEET32 attack (CVE-2016-2183).","
+Details:
+SSL/TLS: Report Vulnerable Cipher Suites for HTTPS
+(OID: 1.3.6.1.4.1.25623.1.0.108031)
+Version used: 2017-02-08T11:56:44Z
+","","","DFN-CERT-2020-2141,DFN-CERT-2020-0368,DFN-CERT-2019-1455,DFN-CERT-2019-0068,DFN-CERT-2018-1296,DFN-CERT-2018-0323,DFN-CERT-2017-2070,DFN-CERT-2017-1954,DFN-CERT-2017-1885,DFN-CERT-2017-1831,DFN-CERT-2017-1821,DFN-CERT-2017-1785,DFN-CERT-2017-1626,DFN-CERT-2017-1326,DFN-CERT-2017-1239,DFN-CERT-2017-1238,DFN-CERT-2017-1090,DFN-CERT-2017-1060,DFN-CERT-2017-0968,DFN-CERT-2017-0947,DFN-CERT-2017-0946,DFN-CERT-2017-0904,DFN-CERT-2017-0816,DFN-CERT-2017-0746,DFN-CERT-2017-0677,DFN-CERT-2017-0675,DFN-CERT-2017-0611,DFN-CERT-2017-0609,DFN-CERT-2017-0522,DFN-CERT-2017-0519,DFN-CERT-2017-0482,DFN-CERT-2017-0351,DFN-CERT-2017-0090,DFN-CERT-2017-0089,DFN-CERT-2017-0088,DFN-CERT-2017-0086,DFN-CERT-2016-1943,DFN-CERT-2016-1937,DFN-CERT-2016-1732,DFN-CERT-2016-1726,DFN-CERT-2016-1715,DFN-CERT-2016-1714,DFN-CERT-2016-1588,DFN-CERT-2016-1555,DFN-CERT-2016-1391,DFN-CERT-2016-1378,CB-K20/1023,CB-K20/0321,CB-K20/0314,CB-K20/0157,CB-K19/0618,CB-K19/0615,CB-K18/0296,CB-K17/1980,CB-K17/1871,CB-K17/1803,CB-K17/1753,CB-K17/1750,CB-K17/1709,CB-K17/1558,CB-K17/1273,CB-K17/1202,CB-K17/1196,CB-K17/1055,CB-K17/1026,CB-K17/0939,CB-K17/0917,CB-K17/0915,CB-K17/0877,CB-K17/0796,CB-K17/0724,CB-K17/0661,CB-K17/0657,CB-K17/0582,CB-K17/0581,CB-K17/0506,CB-K17/0504,CB-K17/0467,CB-K17/0345,CB-K17/0098,CB-K17/0089,CB-K17/0086,CB-K17/0082,CB-K16/1837,CB-K16/1830,CB-K16/1635,CB-K16/1630,CB-K16/1624,CB-K16/1622,CB-K16/1500,CB-K16/1465,CB-K16/1307,CB-K16/1296",""
+192.168.100.173,,443,tcp,5.0,Medium,"Mitigation","SSL/TLS: Report Vulnerable Cipher Suites for HTTPS","This routine reports all SSL/TLS cipher suites accepted by a service
+  where attack vectors exists only on HTTPS services.","'Vulnerable' cipher suites accepted by this service via the TLSv1.0 protocol:
+
+TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+'Vulnerable' cipher suites accepted by this service via the TLSv1.1 protocol:
+
+TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+'Vulnerable' cipher suites accepted by this service via the TLSv1.2 protocol:
+
+TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (SWEET32)
+
+
+",1.3.6.1.4.1.25623.1.0.108031,"CVE-2016-2183,CVE-2016-6329",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:40:17Z,7cf679f9-737d-4909-9742-b9632cf8e7b8,"","The configuration of this services should be changed so
+  that it does not accept the listed cipher suites anymore.
+
+  Please see the references for more resources supporting you with this task.","Services accepting vulnerable SSL/TLS cipher suites via HTTPS.","These rules are applied for the evaluation of the vulnerable cipher suites:
+
+  - 64-bit block cipher 3DES vulnerable to the SWEET32 attack (CVE-2016-2183).","
+Details:
+SSL/TLS: Report Vulnerable Cipher Suites for HTTPS
+(OID: 1.3.6.1.4.1.25623.1.0.108031)
+Version used: 2017-02-08T11:56:44Z
+","","","DFN-CERT-2020-2141,DFN-CERT-2020-0368,DFN-CERT-2019-1455,DFN-CERT-2019-0068,DFN-CERT-2018-1296,DFN-CERT-2018-0323,DFN-CERT-2017-2070,DFN-CERT-2017-1954,DFN-CERT-2017-1885,DFN-CERT-2017-1831,DFN-CERT-2017-1821,DFN-CERT-2017-1785,DFN-CERT-2017-1626,DFN-CERT-2017-1326,DFN-CERT-2017-1239,DFN-CERT-2017-1238,DFN-CERT-2017-1090,DFN-CERT-2017-1060,DFN-CERT-2017-0968,DFN-CERT-2017-0947,DFN-CERT-2017-0946,DFN-CERT-2017-0904,DFN-CERT-2017-0816,DFN-CERT-2017-0746,DFN-CERT-2017-0677,DFN-CERT-2017-0675,DFN-CERT-2017-0611,DFN-CERT-2017-0609,DFN-CERT-2017-0522,DFN-CERT-2017-0519,DFN-CERT-2017-0482,DFN-CERT-2017-0351,DFN-CERT-2017-0090,DFN-CERT-2017-0089,DFN-CERT-2017-0088,DFN-CERT-2017-0086,DFN-CERT-2016-1943,DFN-CERT-2016-1937,DFN-CERT-2016-1732,DFN-CERT-2016-1726,DFN-CERT-2016-1715,DFN-CERT-2016-1714,DFN-CERT-2016-1588,DFN-CERT-2016-1555,DFN-CERT-2016-1391,DFN-CERT-2016-1378,CB-K20/1023,CB-K20/0321,CB-K20/0314,CB-K20/0157,CB-K19/0618,CB-K19/0615,CB-K18/0296,CB-K17/1980,CB-K17/1871,CB-K17/1803,CB-K17/1753,CB-K17/1750,CB-K17/1709,CB-K17/1558,CB-K17/1273,CB-K17/1202,CB-K17/1196,CB-K17/1055,CB-K17/1026,CB-K17/0939,CB-K17/0917,CB-K17/0915,CB-K17/0877,CB-K17/0796,CB-K17/0724,CB-K17/0661,CB-K17/0657,CB-K17/0582,CB-K17/0581,CB-K17/0506,CB-K17/0504,CB-K17/0467,CB-K17/0345,CB-K17/0098,CB-K17/0089,CB-K17/0086,CB-K17/0082,CB-K16/1837,CB-K16/1830,CB-K16/1635,CB-K16/1630,CB-K16/1624,CB-K16/1622,CB-K16/1500,CB-K16/1465,CB-K16/1307,CB-K16/1296",""
+192.168.100.200,synology,5001,tcp,5.0,Medium,"Mitigation","Missing `httpOnly` Cookie Attribute","The application is missing the 'httpOnly' cookie attribute","The cookies:
+
+Set-Cookie: id=;expires=Thu, 01-Jan-1970 00:00:01 GMT;path=/
+
+are missing the ""httpOnly"" attribute.
+",1.3.6.1.4.1.25623.1.0.105925,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:44:25Z,f693bee6-62fc-4561-848a-55477709213f,"","Set the 'httpOnly' attribute for any session cookie.","Application with session handling in cookies.","The flaw is due to a cookie is not using the 'httpOnly' attribute. This
+  allows a cookie to be accessed by JavaScript which could lead to session hijacking attacks.","Check all cookies sent by the application for a missing 'httpOnly' attribute
+Details:
+Missing `httpOnly` Cookie Attribute
+(OID: 1.3.6.1.4.1.25623.1.0.105925)
+Version used: 2019-11-21T13:29:18Z
+","","","",""
+192.168.100.220,unifi,80,tcp,4.8,Medium,"Workaround","Cleartext Transmission of Sensitive Information via HTTP","The host / application transmits sensitive information (username, passwords) in
+  cleartext via HTTP.","The following input fields where identified (URL:input name):
+
+http://unifi/admin/messages.php:pw
+",1.3.6.1.4.1.25623.1.0.108440,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:47:08Z,4bd3719f-2b24-461b-b9c5-16c37a40541f,"An attacker could use this situation to compromise or eavesdrop on the
+  HTTP communication between the client and the server using a man-in-the-middle attack to get access to
+  sensitive data like usernames or passwords.","Enforce the transmission of sensitive data via an encrypted SSL/TLS connection.
+  Additionally make sure the host / application is redirecting all users to the secured SSL/TLS connection before
+  allowing to input sensitive data into the mentioned functions.","Hosts / applications which doesn't enforce the transmission of sensitive data via an
+  encrypted SSL/TLS connection.","","Evaluate previous collected information and check if the host / application is not
+  enforcing the transmission of sensitive data via an encrypted SSL/TLS connection.
+
+  The script is currently checking the following:
+
+  - HTTP Basic Authentication (Basic Auth)
+
+  - HTTP Forms (e.g. Login) with input field of type 'password'
+Details:
+Cleartext Transmission of Sensitive Information via HTTP
+(OID: 1.3.6.1.4.1.25623.1.0.108440)
+Version used: 2018-08-02T07:46:22Z
+","","","",""
+192.168.100.173,,5131,tcp,4.3,Medium,"Mitigation","SSL/TLS: Report Weak Cipher Suites","This routine reports all Weak SSL/TLS cipher suites accepted by a service.
+
+  NOTE: No severity for SMTP services with 'Opportunistic TLS' and weak cipher suites on port 25/tcp is reported.
+  If too strong cipher suites are configured for this service the alternative would be to fall back to an even more insecure
+  cleartext communication.","'Weak' cipher suites accepted by this service via the TLSv1.0 protocol:
+
+TLS_RSA_WITH_RC4_128_MD5
+TLS_RSA_WITH_RC4_128_SHA
+
+'Weak' cipher suites accepted by this service via the TLSv1.1 protocol:
+
+TLS_RSA_WITH_RC4_128_MD5
+TLS_RSA_WITH_RC4_128_SHA
+
+'Weak' cipher suites accepted by this service via the TLSv1.2 protocol:
+
+TLS_RSA_WITH_RC4_128_MD5
+TLS_RSA_WITH_RC4_128_SHA
+
+
+",1.3.6.1.4.1.25623.1.0.103440,"CVE-2013-2566,CVE-2015-2808,CVE-2015-4000",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:40:17Z,b2677490-33f4-43f5-8508-c0c07a9e3626,"","The configuration of this services should be changed so
+  that it does not accept the listed weak cipher suites anymore.
+
+  Please see the references for more resources supporting you with this task.","","These rules are applied for the evaluation of the cryptographic strength:
+
+  - RC4 is considered to be weak (CVE-2013-2566, CVE-2015-2808).
+
+  - Ciphers using 64 bit or less are considered to be vulnerable to brute force methods
+  and therefore considered as weak (CVE-2015-4000).
+
+  - 1024 bit RSA authentication is considered to be insecure and therefore as weak.
+
+  - Any cipher considered to be secure for only the next 10 years is considered as medium
+
+  - Any other cipher is considered as strong","
+Details:
+SSL/TLS: Report Weak Cipher Suites
+(OID: 1.3.6.1.4.1.25623.1.0.103440)
+Version used: 2018-08-27T13:39:29Z
+","","","DFN-CERT-2020-1561,DFN-CERT-2020-1276,DFN-CERT-2017-1821,DFN-CERT-2016-1692,DFN-CERT-2016-1648,DFN-CERT-2016-1168,DFN-CERT-2016-0665,DFN-CERT-2016-0642,DFN-CERT-2016-0184,DFN-CERT-2016-0135,DFN-CERT-2016-0101,DFN-CERT-2016-0035,DFN-CERT-2015-1853,DFN-CERT-2015-1679,DFN-CERT-2015-1632,DFN-CERT-2015-1608,DFN-CERT-2015-1542,DFN-CERT-2015-1518,DFN-CERT-2015-1406,DFN-CERT-2015-1341,DFN-CERT-2015-1194,DFN-CERT-2015-1144,DFN-CERT-2015-1113,DFN-CERT-2015-1078,DFN-CERT-2015-1067,DFN-CERT-2015-1038,DFN-CERT-2015-1016,DFN-CERT-2015-1012,DFN-CERT-2015-0980,DFN-CERT-2015-0977,DFN-CERT-2015-0976,DFN-CERT-2015-0960,DFN-CERT-2015-0956,DFN-CERT-2015-0944,DFN-CERT-2015-0937,DFN-CERT-2015-0925,DFN-CERT-2015-0884,DFN-CERT-2015-0881,DFN-CERT-2015-0879,DFN-CERT-2015-0866,DFN-CERT-2015-0844,DFN-CERT-2015-0800,DFN-CERT-2015-0737,DFN-CERT-2015-0696,DFN-CERT-2014-0977,CB-K19/0812,CB-K17/1750,CB-K16/1593,CB-K16/1552,CB-K16/1102,CB-K16/0617,CB-K16/0599,CB-K16/0168,CB-K16/0121,CB-K16/0090,CB-K16/0030,CB-K15/1751,CB-K15/1591,CB-K15/1550,CB-K15/1517,CB-K15/1514,CB-K15/1464,CB-K15/1442,CB-K15/1334,CB-K15/1269,CB-K15/1136,CB-K15/1090,CB-K15/1059,CB-K15/1022,CB-K15/1015,CB-K15/0986,CB-K15/0964,CB-K15/0962,CB-K15/0932,CB-K15/0927,CB-K15/0926,CB-K15/0907,CB-K15/0901,CB-K15/0896,CB-K15/0889,CB-K15/0877,CB-K15/0850,CB-K15/0849,CB-K15/0834,CB-K15/0827,CB-K15/0802,CB-K15/0764,CB-K15/0733,CB-K15/0667,CB-K14/0935,CB-K13/0942",""
+192.168.100.173,,443,tcp,4.0,Medium,"Workaround","SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability","The SSL/TLS service uses Diffie-Hellman groups with insufficient strength
+  (key size < 2048).","Server Temporary Key Size: 1024 bits
+
+",1.3.6.1.4.1.25623.1.0.106223,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:40:17Z,4548233e-0a00-43bd-89b2-721f961b7545,"An attacker might be able to decrypt the SSL/TLS communication offline.","Deploy (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE) or use
+  a 2048-bit or stronger Diffie-Hellman group (see the references).
+
+  For Apache Web Servers:
+  Beginning with version 2.4.7, mod_ssl will use DH parameters which include primes with lengths of more than 1024 bits.","","The Diffie-Hellman group are some big numbers that are used as base for
+  the DH computations. They can be, and often are, fixed. The security of the final secret depends on the size
+  of these parameters. It was found that 512 and 768 bits to be weak, 1024 bits to be breakable by really
+  powerful attackers like governments.","Checks the DHE temporary public key size.
+Details:
+SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerab...
+(OID: 1.3.6.1.4.1.25623.1.0.106223)
+Version used: 2018-12-21T10:51:07Z
+","","","",""
+192.168.100.173,,443,tcp,4.0,Medium,"Mitigation","SSL/TLS: Certificate Signed Using A Weak Signature Algorithm","The remote service is using a SSL/TLS certificate in the certificate chain that has been signed using a
+  cryptographically weak hashing algorithm.","The following certificates are part of the certificate chain but using insecure signature algorithms:
+
+Subject:              CN=CA_ipp1,O=ACL
+Signature Algorithm:  sha1WithRSAEncryption
+
+Subject:              CN=RootCA,O=ACL
+Signature Algorithm:  sha1WithRSAEncryption
+
+
+",1.3.6.1.4.1.25623.1.0.105880,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:40:17Z,07865967-e4ff-443c-afcf-8d0d34965b39,"","Servers that use SSL/TLS certificates signed with a weak SHA-1, MD5, MD4 or MD2 hashing algorithm will need to obtain new
+  SHA-2 signed SSL/TLS certificates to avoid web browser SSL/TLS certificate warnings.","","The following hashing algorithms used for signing SSL/TLS certificates are considered cryptographically weak
+  and not secure enough for ongoing use:
+
+  - Secure Hash Algorithm 1 (SHA-1)
+
+  - Message Digest 5 (MD5)
+
+  - Message Digest 4 (MD4)
+
+  - Message Digest 2 (MD2)
+
+  Beginning as late as January 2017 and as early as June 2016, browser developers such as Microsoft and Google will begin warning users when visiting
+  web sites that use SHA-1 signed Secure Socket Layer (SSL) certificates.
+
+  NOTE: The script preference allows to set one or more custom SHA-1 fingerprints of CA certificates which are trusted by this routine. The fingerprints
+  needs to be passed comma-separated and case-insensitive:
+
+  Fingerprint1
+
+  or
+
+  fingerprint1,Fingerprint2","Check which hashing algorithm was used to sign the remote SSL/TLS certificate.
+Details:
+SSL/TLS: Certificate Signed Using A Weak Signature Algorithm
+(OID: 1.3.6.1.4.1.25623.1.0.105880)
+Version used: 2018-09-21T15:17:10Z
+","","","",""
+192.168.100.173,,5131,tcp,4.0,Medium,"Mitigation","SSL/TLS: Certificate Signed Using A Weak Signature Algorithm","The remote service is using a SSL/TLS certificate in the certificate chain that has been signed using a
+  cryptographically weak hashing algorithm.","The following certificates are part of the certificate chain but using insecure signature algorithms:
+
+Subject:              CN=CA_ipp1,O=ACL
+Signature Algorithm:  sha1WithRSAEncryption
+
+Subject:              CN=RootCA,O=ACL
+Signature Algorithm:  sha1WithRSAEncryption
+
+
+",1.3.6.1.4.1.25623.1.0.105880,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:40:17Z,69c03849-2755-42c5-9d35-dd3e251556d0,"","Servers that use SSL/TLS certificates signed with a weak SHA-1, MD5, MD4 or MD2 hashing algorithm will need to obtain new
+  SHA-2 signed SSL/TLS certificates to avoid web browser SSL/TLS certificate warnings.","","The following hashing algorithms used for signing SSL/TLS certificates are considered cryptographically weak
+  and not secure enough for ongoing use:
+
+  - Secure Hash Algorithm 1 (SHA-1)
+
+  - Message Digest 5 (MD5)
+
+  - Message Digest 4 (MD4)
+
+  - Message Digest 2 (MD2)
+
+  Beginning as late as January 2017 and as early as June 2016, browser developers such as Microsoft and Google will begin warning users when visiting
+  web sites that use SHA-1 signed Secure Socket Layer (SSL) certificates.
+
+  NOTE: The script preference allows to set one or more custom SHA-1 fingerprints of CA certificates which are trusted by this routine. The fingerprints
+  needs to be passed comma-separated and case-insensitive:
+
+  Fingerprint1
+
+  or
+
+  fingerprint1,Fingerprint2","Check which hashing algorithm was used to sign the remote SSL/TLS certificate.
+Details:
+SSL/TLS: Certificate Signed Using A Weak Signature Algorithm
+(OID: 1.3.6.1.4.1.25623.1.0.105880)
+Version used: 2018-09-21T15:17:10Z
+","","","",""
+192.168.100.1,,443,tcp,4.0,Medium,"Workaround","SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability","The SSL/TLS service uses Diffie-Hellman groups with insufficient strength
+  (key size < 2048).","Server Temporary Key Size: 1024 bits
+
+",1.3.6.1.4.1.25623.1.0.106223,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:36:42Z,449735bc-cabd-407f-bfb4-4d43cd187b9f,"An attacker might be able to decrypt the SSL/TLS communication offline.","Deploy (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE) or use
+  a 2048-bit or stronger Diffie-Hellman group (see the references).
+
+  For Apache Web Servers:
+  Beginning with version 2.4.7, mod_ssl will use DH parameters which include primes with lengths of more than 1024 bits.","","The Diffie-Hellman group are some big numbers that are used as base for
+  the DH computations. They can be, and often are, fixed. The security of the final secret depends on the size
+  of these parameters. It was found that 512 and 768 bits to be weak, 1024 bits to be breakable by really
+  powerful attackers like governments.","Checks the DHE temporary public key size.
+Details:
+SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerab...
+(OID: 1.3.6.1.4.1.25623.1.0.106223)
+Version used: 2018-12-21T10:51:07Z
+","","","",""
+192.168.100.199,,19443,tcp,4.0,Medium,"Mitigation","SSL/TLS: Certificate Signed Using A Weak Signature Algorithm","The remote service is using a SSL/TLS certificate in the certificate chain that has been signed using a
+  cryptographically weak hashing algorithm.","The following certificates are part of the certificate chain but using insecure signature algorithms:
+
+Subject:              CN=TPRI-DEVICE,O=TPRI,ST=CA,C=US
+Signature Algorithm:  sha1WithRSAEncryption
+
+
+",1.3.6.1.4.1.25623.1.0.105880,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:43:12Z,9efee855-b83d-44a6-b010-2e1ea51e4472,"","Servers that use SSL/TLS certificates signed with a weak SHA-1, MD5, MD4 or MD2 hashing algorithm will need to obtain new
+  SHA-2 signed SSL/TLS certificates to avoid web browser SSL/TLS certificate warnings.","","The following hashing algorithms used for signing SSL/TLS certificates are considered cryptographically weak
+  and not secure enough for ongoing use:
+
+  - Secure Hash Algorithm 1 (SHA-1)
+
+  - Message Digest 5 (MD5)
+
+  - Message Digest 4 (MD4)
+
+  - Message Digest 2 (MD2)
+
+  Beginning as late as January 2017 and as early as June 2016, browser developers such as Microsoft and Google will begin warning users when visiting
+  web sites that use SHA-1 signed Secure Socket Layer (SSL) certificates.
+
+  NOTE: The script preference allows to set one or more custom SHA-1 fingerprints of CA certificates which are trusted by this routine. The fingerprints
+  needs to be passed comma-separated and case-insensitive:
+
+  Fingerprint1
+
+  or
+
+  fingerprint1,Fingerprint2","Check which hashing algorithm was used to sign the remote SSL/TLS certificate.
+Details:
+SSL/TLS: Certificate Signed Using A Weak Signature Algorithm
+(OID: 1.3.6.1.4.1.25623.1.0.105880)
+Version used: 2018-09-21T15:17:10Z
+","","","",""
+192.168.100.199,,10443,tcp,4.0,Medium,"Mitigation","SSL/TLS: Certificate Signed Using A Weak Signature Algorithm","The remote service is using a SSL/TLS certificate in the certificate chain that has been signed using a
+  cryptographically weak hashing algorithm.","The following certificates are part of the certificate chain but using insecure signature algorithms:
+
+Subject:              CN=TPRI-DEVICE,O=TPRI,ST=CA,C=US
+Signature Algorithm:  sha1WithRSAEncryption
+
+
+",1.3.6.1.4.1.25623.1.0.105880,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:43:12Z,e4f4be0d-210f-4488-9f75-106246bd222d,"","Servers that use SSL/TLS certificates signed with a weak SHA-1, MD5, MD4 or MD2 hashing algorithm will need to obtain new
+  SHA-2 signed SSL/TLS certificates to avoid web browser SSL/TLS certificate warnings.","","The following hashing algorithms used for signing SSL/TLS certificates are considered cryptographically weak
+  and not secure enough for ongoing use:
+
+  - Secure Hash Algorithm 1 (SHA-1)
+
+  - Message Digest 5 (MD5)
+
+  - Message Digest 4 (MD4)
+
+  - Message Digest 2 (MD2)
+
+  Beginning as late as January 2017 and as early as June 2016, browser developers such as Microsoft and Google will begin warning users when visiting
+  web sites that use SHA-1 signed Secure Socket Layer (SSL) certificates.
+
+  NOTE: The script preference allows to set one or more custom SHA-1 fingerprints of CA certificates which are trusted by this routine. The fingerprints
+  needs to be passed comma-separated and case-insensitive:
+
+  Fingerprint1
+
+  or
+
+  fingerprint1,Fingerprint2","Check which hashing algorithm was used to sign the remote SSL/TLS certificate.
+Details:
+SSL/TLS: Certificate Signed Using A Weak Signature Algorithm
+(OID: 1.3.6.1.4.1.25623.1.0.105880)
+Version used: 2018-09-21T15:17:10Z
+","","","",""
+192.168.100.199,,18443,tcp,4.0,Medium,"Mitigation","SSL/TLS: Certificate Signed Using A Weak Signature Algorithm","The remote service is using a SSL/TLS certificate in the certificate chain that has been signed using a
+  cryptographically weak hashing algorithm.","The following certificates are part of the certificate chain but using insecure signature algorithms:
+
+Subject:              CN=TPRI-DEVICE,O=TPRI,ST=CA,C=US
+Signature Algorithm:  sha1WithRSAEncryption
+
+
+",1.3.6.1.4.1.25623.1.0.105880,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:43:12Z,4c1d8108-f446-41fe-a529-865aff5642a9,"","Servers that use SSL/TLS certificates signed with a weak SHA-1, MD5, MD4 or MD2 hashing algorithm will need to obtain new
+  SHA-2 signed SSL/TLS certificates to avoid web browser SSL/TLS certificate warnings.","","The following hashing algorithms used for signing SSL/TLS certificates are considered cryptographically weak
+  and not secure enough for ongoing use:
+
+  - Secure Hash Algorithm 1 (SHA-1)
+
+  - Message Digest 5 (MD5)
+
+  - Message Digest 4 (MD4)
+
+  - Message Digest 2 (MD2)
+
+  Beginning as late as January 2017 and as early as June 2016, browser developers such as Microsoft and Google will begin warning users when visiting
+  web sites that use SHA-1 signed Secure Socket Layer (SSL) certificates.
+
+  NOTE: The script preference allows to set one or more custom SHA-1 fingerprints of CA certificates which are trusted by this routine. The fingerprints
+  needs to be passed comma-separated and case-insensitive:
+
+  Fingerprint1
+
+  or
+
+  fingerprint1,Fingerprint2","Check which hashing algorithm was used to sign the remote SSL/TLS certificate.
+Details:
+SSL/TLS: Certificate Signed Using A Weak Signature Algorithm
+(OID: 1.3.6.1.4.1.25623.1.0.105880)
+Version used: 2018-09-21T15:17:10Z
+","","","",""
+192.168.100.100,,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 183498963
+Packet 2: 183499070
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:37:04Z,307f99c0-5f01-4c25-b9af-add4cee656d4,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.201,esx1,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 701062876
+Packet 2: 59152654
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:44:35Z,7420f1e9-5f57-4a97-9a5d-541b0f2e127a,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.202,esx2,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 874598897
+Packet 2: 2596987157
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:44:39Z,28f8b1ff-0475-4631-bc61-d669009f3a76,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.199,,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 283212145
+Packet 2: 283212253
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:43:12Z,6c3370e3-d64b-4790-84d3-35069d73df53,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.1,,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 232076723
+Packet 2: 232076833
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:36:42Z,2636048e-4d0b-49a1-abf8-5f8b87c08d09,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.200,synology,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 924205836
+Packet 2: 924205943
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:44:25Z,43dbdbf7-a97b-4c6f-b3e0-8c5ce95acb40,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.101,,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 94879354
+Packet 2: 94879462
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:37:04Z,f8a94693-aaa1-40e2-ba85-fe14e2f867e4,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.10,,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 231990632
+Packet 2: 231990739
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:36:42Z,7db04bfb-bfb0-4734-bdbd-692b2273cce0,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.137,,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 45171464
+Packet 2: 45171733
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:37:18Z,49375773-6f0e-4b8e-9bf2-8029ea085939,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.220,unifi,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 2715629872
+Packet 2: 2715630980
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:47:08Z,49663d24-1118-4469-b863-983358f59967,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
+192.168.100.173,,,,2.6,Low,"Mitigation","TCP timestamps","The remote host implements TCP timestamps and therefore allows to compute
+  the uptime.","It was detected that the host implements RFC1323/RFC7323.
+
+The following timestamps were retrieved with a delay of 1 seconds in-between:
+Packet 1: 183504133
+Packet 2: 183504244
+",1.3.6.1.4.1.25623.1.0.80091,"",d2558bcb-b476-4671-a0f9-2de47457e32e,"GlobeTech Home Internal",2021-05-05T02:40:17Z,9c19ac4e-115a-4fbd-860d-5a589faa8241,"A side effect of this feature is that the uptime of the remote
+  host can sometimes be computed.","To disable TCP timestamps on linux add the line 'net.ipv4.tcp_timestamps = 0' to
+  /etc/sysctl.conf. Execute 'sysctl -p' to apply the settings at runtime.
+
+  To disable TCP timestamps on Windows execute 'netsh int tcp set global timestamps=disabled'
+
+  Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
+
+  The default behavior of the TCP/IP stack on this Systems is to not use the
+  Timestamp options when initiating TCP connections, but use them if the TCP peer
+  that is initiating communication includes them in their synchronize (SYN) segment.
+
+  See the references for more information.","TCP/IPv4 implementations that implement RFC1323.","The remote host implements TCP timestamps, as defined by RFC1323.","Special IP packets are forged and sent with a little delay in between to the
+  target IP. The responses are searched for a timestamps. If found, the timestamps are reported.
+Details:
+TCP timestamps
+(OID: 1.3.6.1.4.1.25623.1.0.80091)
+Version used: 2019-03-19T10:27:27Z
+","","","",""
