@@ -43,7 +43,12 @@ function New-GVMReport
         # Param2 help description
         [ValidateNotNullOrEmpty()]
         [string]
-        $ReportName
+        $ReportName,
+
+        #Param3 
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $OutputDirectory
     )
 
     Begin
@@ -58,8 +63,8 @@ function New-GVMReport
 <style>
 $StyleSheets    
 </style>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-"@
+"@ # <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 
     }
     Process
@@ -77,7 +82,7 @@ $StyleSheets
         $HighVulns = $CSVFile.Severity.Contains("High").Count
         $MediumVulns = $CSVFile.Severity.Contains("Medium").Count
         $LowVulns = $CSVFile.Severity.Contains("Low").Count
-        $PieChartJS = @"
+ <#       $PieChartJS = @"
 <script type="text/javascript">
 // Load google charts
 google.charts.load('current', {'packages':['corechart']});
@@ -101,6 +106,7 @@ function drawChart() {
 }
 </script>
 "@
+#>
 
         # Summary of Vulnerabilities
         $VulnSummary = $CSVFile | ConvertTo-Html -Property IP,CVSS,Severity,"NVT Name" -Fragment -PreContent "<h2>Summary of Vulnerabilities</h2>"
@@ -109,10 +115,6 @@ function drawChart() {
         $VulnSummary = $VulnSummary -replace '<td>Low</td>','<td class="LowSeverity">Low</td>'
 
         # Iterate through all vulnerabilites and provide details results
-        # What should it look like
-        # IP address of Host as the "header" - hostname if available
-        # Port number of service - port service type tcp - 
-
         # Can have multiple findings for each host, so have to iterate through all objects in the CSVFile
         $CSVFile | ForEach-Object {
             $VulnIP = $_.IP 
@@ -125,6 +127,9 @@ function drawChart() {
     End
     {
         $Report = ConvertTo-Html -Body "$ReportTitle`r`n $VulnSummaryGraphs`r`n $PieChartJS`r`n `r`n </br></br> $VulnSummary`r`n </br></br> $VulnHostDetails" -Title $ReportName -Head $header
-        $FinalOutput = $Report | Out-File .\$ReportName.html 
+        
+        $OutputFile = $ReportName+".html"
+        $OutputLocation = Join-Path $OutputDirectory $OutputFile 
+        $FinalOutput = $Report | Out-File $OutputLocation
     }
 }
