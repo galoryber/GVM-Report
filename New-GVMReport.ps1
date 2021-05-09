@@ -5,8 +5,7 @@
    GVM / OpenVAS reports are too old looking to feel valuable. This script will take in the OpenVAS report data and format it in a cleaner more modern way. Export OpenVAS / Greenbone data to csv format, and use that as input to this script to get an html based report. 
    The report colors and images can be customized to match company colors or logos. 
 .EXAMPLE
-   New-GVMReport -InputCSV GVMExport.csv -CustomLogo CompanyLogo.png -ReportName ClientAReport -OutputPDF $true
-   Default is to create an HTML report based on the csv input. Additional options for the logo and PDF are TODOs. 
+   New-GVMReport -InputCSV 'C:\Users\username\Desktop\Greenbone.csv' -ReportName "Customer 123 External Vuln Scan 2020" -OutputDirectory 'C:\Users\username\Desktop\' 
 .INPUTS
    Inputs to this cmdlet (if any)
 .OUTPUTS
@@ -17,8 +16,7 @@
    Well, here I thought I was going to do something cool. I'll just be copying from here. 
    https://adamtheautomator.com/html-report/
 
-   https://www.w3schools.com/howto/howto_css_skill_bar.asp Severity bars - CSS 
-
+   Result is a self contained html file. The CSS file is seperate initially, for easier editing, but it's merged with the html for a single file to deliver to the customer. 
 .COMPONENT
    The component this cmdlet belongs to
 .ROLE
@@ -114,6 +112,9 @@ function drawChart() {
         $VulnSummary = $VulnSummary -replace '<td>Medium</td>','<td class="MediumSeverity">Medium</td>'
         $VulnSummary = $VulnSummary -replace '<td>Low</td>','<td class="LowSeverity">Low</td>'
 
+        # Details Section
+        $DetailsStatement = "The section below shows details for each host containing an identified vulnerability during automatic scanning. The results are sorted by severity. A single host may appear multiple times in multiple places if it contains several services and vulnerabilites. Timestamps are measured in UTC. This information is a starting point for remediation, but should be reviewed by internal experts for any potential false positives. GlobeTech LLC uses the results of these scans to aid in manual penetration testing by quickly identifying potentially vulnerable hosts. When there IS potential for an attack vector, these results may be validated by GlobeTech LLC and included in the penetration test report."
+        $DetailsSectionText = ConvertTo-Html -Fragment -PreContent "<h2>Details By Host</h2>" -PostContent "<p id='StandardText'>$DetailsStatement</p></br>"
         # Iterate through all vulnerabilites and provide details results
         # Can have multiple findings for each host, so have to iterate through all objects in the CSVFile
         $CSVFile | ForEach-Object {
@@ -126,7 +127,7 @@ function drawChart() {
     }
     End
     {
-        $Report = ConvertTo-Html -Body "$ReportTitle`r`n $VulnSummaryGraphs`r`n $PieChartJS`r`n `r`n </br></br> $VulnSummary`r`n </br></br> $VulnHostDetails" -Title $ReportName -Head $header
+        $Report = ConvertTo-Html -Body "$ReportTitle`r`n $VulnSummaryGraphs`r`n $PieChartJS`r`n `r`n </br></br> $VulnSummary`r`n </br></br> $DetailsSectionText`r`n </br></br> $VulnHostDetails" -Title $ReportName -Head $header
         
         $OutputFile = $ReportName+".html"
         $OutputLocation = Join-Path $OutputDirectory $OutputFile 
