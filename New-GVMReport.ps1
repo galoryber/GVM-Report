@@ -107,10 +107,24 @@ function drawChart() {
         $VulnSummary = $VulnSummary -replace '<td>High</td>','<td class="HighSeverity">High</td>'
         $VulnSummary = $VulnSummary -replace '<td>Medium</td>','<td class="MediumSeverity">Medium</td>'
         $VulnSummary = $VulnSummary -replace '<td>Low</td>','<td class="LowSeverity">Low</td>'
+
+        # Iterate through all vulnerabilites and provide details results
+        # What should it look like
+        # IP address of Host as the "header" - hostname if available
+        # Port number of service - port service type tcp - 
+
+        # Can have multiple findings for each host, so have to iterate through all objects in the CSVFile
+        $CSVFile | ForEach-Object {
+            $VulnIP = $_.IP 
+            $VulnHostDetails += $_ | ConvertTo-Html -As List -Property Hostname,Port,"Port Protocol",CVSS,Severity,"NVT Name",Summary,TimeStamp,"Specific Result",Impact,Solution,"Affected Software/OS:","Vulnerability Insight","Vulnerability Detection Method:","Product Detection Result:",CVEs,"Other References" -Fragment -PreContent "<h2>$VulnIp</h2>" -PostContent "</br>"
+        }
+        $VulnHostDetails = $VulnHostDetails -replace '<td>High</td>','<td class="HighSeverity">High</td>'
+        $VulnHostDetails = $VulnHostDetails -replace '<td>Medium</td>','<td class="MediumSeverity">Medium</td>'
+        $VulnHostDetails = $VulnHostDetails -replace '<td>Low</td>','<td class="LowSeverity">Low</td>'
     }
     End
     {
-        $Report = ConvertTo-Html -Body "$ReportTitle`r`n $VulnSummaryGraphs`r`n $PieChartJS`r`n `r`n </br></br> $VulnSummary`r`n" -Title $ReportName -Head $header
+        $Report = ConvertTo-Html -Body "$ReportTitle`r`n $VulnSummaryGraphs`r`n $PieChartJS`r`n `r`n </br></br> $VulnSummary`r`n </br></br> $VulnHostDetails" -Title $ReportName -Head $header
         $FinalOutput = $Report | Out-File .\$ReportName.html 
     }
 }
