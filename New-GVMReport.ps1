@@ -107,7 +107,7 @@ function drawChart() {
 #>
 
         # Summary of Vulnerabilities
-        $VulnSummary = $CSVFile | ConvertTo-Html -Property IP,CVSS,Severity,"NVT Name" -Fragment -PreContent "<h2>Summary of Vulnerabilities</h2>"
+        $VulnSummary = $CSVFile | ConvertTo-Html -Property IP,Port,CVSS,Severity,"NVT Name" -Fragment -PreContent "<h2>Summary of Vulnerabilities</h2>"
         $VulnSummary = $VulnSummary -replace '<td>High</td>','<td class="HighSeverity">High</td>'
         $VulnSummary = $VulnSummary -replace '<td>Medium</td>','<td class="MediumSeverity">Medium</td>'
         $VulnSummary = $VulnSummary -replace '<td>Low</td>','<td class="LowSeverity">Low</td>'
