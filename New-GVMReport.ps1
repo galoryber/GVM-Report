@@ -51,15 +51,112 @@ function New-GVMReport
 
     Begin
     {
+        # Add optional param for logo, but leave hardcoded logo here. $LogoUrl = "https://globetech.biz/wp-content/uploads/2020/11/gt2-e1605662950390.png"
+        $LogoUrl = "https://globetech.biz/wp-content/uploads/2020/11/gt2-e1605662950390.png" # You may also need to change the LogoPlacement CSS to adjust the size of the image
         $CSVFile = Import-Csv $InputCSV
         $TitleStatement = "This report displays the results of vulnerability scanning that was performed against the client network during GlobeTech LLC's assessment. It aims to identify known vulnerabilities and CVEs throughout the network in a mass scan of networked devices. This report is a snapshot in time, capturing those devices that were online during the scan process."
-        $ReportTitle = ConvertTo-Html -Fragment -PreContent "<h1>$ReportName</h1>" -PostContent "<p id='CreationDate'>Report Date: $(Get-Date)</p></br><img id='LogoPlacement' src='https://globetech.biz/wp-content/uploads/2020/11/gt2-e1605662950390.png'> <p id='StandardText'>$TitleStatement</p></br></br>"
+        $ReportTitle = ConvertTo-Html -Fragment -PreContent "<h1>$ReportName</h1>" -PostContent "<p id='CreationDate'>Report Date: $(Get-Date)</p></br><img id='LogoPlacement' src='$LogoUrl'> <p id='StandardText'>$TitleStatement</p></br></br>"
         
         # For some reason, reference to -CssUri didn't work, but I wanted a seperate CSS file for easier CSS editing - this did it
-        $StyleSheets = Get-Content -Path .\GVM.css -Raw  
+        # Change this to embedded entirely here - easier to adopt a single ps1 file - CSS file can be written, referenced, then deleted. 
+        # $StyleSheets = Get-Content -Path .\GVM.css -Raw  
         $header = @"
 <style>
-$StyleSheets    
+/* Standard */
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    text-align: center;
+    color: #000099;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    color: #000099;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Severity Ratings*/
+.HighSeverity {
+    color: #ff0000;
+    font-weight: bold;
+}
+.MediumSeverity {
+    color: #ffa600cd;
+    font-weight: bold;
+}
+.LowSeverity {
+    color: #008000;
+    font-weight: bold;
+}
+
+/* Severity Chart*/
+
+/* Table Sections */
+table {
+    font-size: 16px;
+    border: 0px; 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+} 
+
+td {
+    padding: 4px;
+    margin: 0px;
+    border: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    background: #395870;
+    background: linear-gradient(#49708f, #293f50);
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tbody tr:nth-child(even) {
+    background: #f0f0f2;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #CreationDate {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #ff00ea8c;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+    #StandardText {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;   
+}
+
+    #LogoPlacement {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+
+    } 
 </style>
 "@ # <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
