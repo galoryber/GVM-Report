@@ -64,15 +64,15 @@ function New-GVMReport
 <style>
 /* Standard */
 h1 {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    font-family: 'Aptos Display', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
     text-align: center;
-    color: #000099;
+    color: #;
     font-size: 50px;
     font-weight: bold;
 }
 
 h2 {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Aptos', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
     color: #000099;
     font-size: 28px;
@@ -99,7 +99,7 @@ h2 {
 table {
     font-size: 16px;
     border: 0px; 
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Aptos', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -134,8 +134,8 @@ tbody tr:nth-child(even) {
 }
 
     #CreationDate {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #ff00ea8c;
+    font-family: 'Aptos', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #000099;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
@@ -143,7 +143,7 @@ tbody tr:nth-child(even) {
 
     #StandardText {
     text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Aptos', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 18px;
     margin-left: auto;
     margin-right: auto;
