@@ -225,11 +225,32 @@ function drawChart() {
     End
     {
         $Report = ConvertTo-Html -Body "$ReportTitle`r`n $VulnSummaryGraphs`r`n $PieChartJS`r`n `r`n </br></br> $VulnSummary`r`n </br></br> $DetailsSectionText`r`n </br></br> $VulnHostDetails" -Title $ReportName -Head $header
-        
-        $OutputFile = $ReportName+".html"
-        $OutputLocation = Join-Path $OutputDirectory $OutputFile 
-        $FinalOutput = $Report | Out-File $OutputLocation
 
-        # Look into https://community.spiceworks.com/topic/962473-powershell-html-to-pdf for PDF printing, IE section
+        $OutputFile = $ReportName + ".html"
+        $OutputLocation = Join-Path $OutputDirectory $OutputFile
+
+        # Write HTML
+        $Report | Out-File -FilePath $OutputLocation -Encoding UTF8
+        Write-Host "Built HTML report at $OutputLocation"
+
+        # Verify file exists
+        if (-not (Test-Path $OutputLocation)) {
+            throw "HTML report was not written to disk: $OutputLocation"
+        }
+
+        # PDF output
+        $PDFOutputFileName = $ReportName + ".pdf"
+        $PDFOutputLocation = Join-Path $OutputDirectory $PDFOutputFileName
+
+        # Chrome path
+        $ChromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+        $msChromeFileUriLocation = Join-Path (Get-Location) $OutputLocation
+        $FileUri = "file:///$($msChromeFileUriLocation -replace '\\','/')"
+
+        Write-Host "Converting $FileUri to PDF at $PDFOutputLocation..."
+        $msChromePDFOutputLocation = Join-Path (Get-Location) $PDFOutputLocation
+        # Run Chrome directly so errors print
+        & $ChromePath --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="$msChromePDFOutputLocation" $FileUri
+
     }
 }
